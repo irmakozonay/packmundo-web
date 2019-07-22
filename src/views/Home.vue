@@ -1,18 +1,33 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <p>Choose it, Design it, Get it</p>
+    <MainBoxType v-for="mainBoxType in mainBoxTypes" :key="mainBoxType.id" :mainBoxType="mainBoxType"/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import MainBoxType from '@/components/box-type/MainBoxType.vue'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
-  name: 'home',
   components: {
-    HelloWorld
+    MainBoxType
+  },
+  computed: {
+    ...mapGetters('boxType', [
+      'mainBoxTypes'
+    ])
+  },
+  methods: {
+    ...mapActions('boxType', [
+      'getMainBoxTypes'
+    ])
+  },
+  created () {
+    if (this.mainBoxTypes.length === 0) {
+      this.getMainBoxTypes()
+    }
   }
 }
 </script>

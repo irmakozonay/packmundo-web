@@ -1,16 +1,17 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import boxType from '@/components/box-type/store'
+import auth from '@/components/auth/store'
+import user from '@/components/user/store'
+import order from '@/components/order/store'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  state: {
-
-  },
-  mutations: {
-
-  },
-  actions: {
-
+  modules: {
+    boxType,
+    auth,
+    user,
+    order
   }
 })
