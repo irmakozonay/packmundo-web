@@ -3,7 +3,7 @@ import axios from 'axios'
 export default {
   namespaced: true,
   state: {
-    orderQuotes: []
+    orderQuotes: null
   },
   getters: {
     orderQuotes: state => state.orderQuotes
@@ -16,7 +16,7 @@ export default {
   },
   mutations: {
     SET_ORDER_QUOTES (state, orderQuotes) {
-      console.log(orderQuotes)
+      console.log('orderQuotes ready')
       state.orderQuotes = orderQuotes
     }
   }

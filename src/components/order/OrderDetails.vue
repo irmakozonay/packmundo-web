@@ -11,7 +11,8 @@
     <p>
       <span class="info">Quote Address:</span> {{order.address.city}}, {{order.address.country}}
     </p>
-    <Quotes v-if="order.status == 'QUOTES_READY'" :quotes="orderQuotes"/>
+    <Quotes v-if="order.status == 'QUOTES_READY'" :quotes="orderQuotes" :orderQuantity="order.quantity"/>
+    <h2 v-if="order.status == 'PAYMENT_RECEIVED'">INVOICE</h2>
   </div>
 </template>
 
@@ -25,8 +26,10 @@ export default {
   },
   watch: {
     order: function (newVal, oldVal) {
-      console.log(newVal.uuid)
-      // this.getOrderQuotes(newVal.uuid)
+      if (newVal.status === 'QUOTES_READY') {
+        console.log(newVal.uuid)
+        this.getOrderQuotes(newVal.uuid)
+      }
     }
   },
   components: {
