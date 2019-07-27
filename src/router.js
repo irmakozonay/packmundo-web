@@ -8,6 +8,7 @@ import Profile from './views/Profile.vue'
 import UserOrders from '@/components/user/UserOrders.vue'
 import UserBoxes from '@/components/user/UserBoxes.vue'
 import UserDetails from '@/components/user/UserDetails.vue'
+import Admin from '@/components/admin/Admin.vue'
 
 Vue.use(Router)
 
@@ -19,6 +20,7 @@ export default new Router({
     { path: '/boxlist', name: 'BoxList', component: BoxList },
     { path: '/tool', name: 'Tool', component: Tool },
     { path: '/quote', name: 'Quote', component: Quote },
+    { path: '/admin', name: 'Admin', component: Admin },
     {
       path: '/profile',
       component: Profile,

@@ -12,7 +12,7 @@
       <tr>
         <td v-for="(quote, i) in quotes" :key="quote.uuid">
           <table>
-            <tr v-for="(deliveryQuote, j) in quote.deliveryQuotes" :key="deliveryQuote.deliveryCompany.uuid">
+            <tr v-for="(deliveryQuote, j) in quote.deliveryQuotes" :key="deliveryQuote.uuid">
               <input v-if="selectedQuoteIndex == i" type="radio" :id="deliveryQuote.uuid" :value="j" v-model="selectedDeliveryQuoteIndexes[i]">
               <input disabled v-if="selectedQuoteIndex != i" type="radio" :id="j" :value="j" v-model="selectedDeliveryQuoteIndexes[i]">
               <p>{{deliveryQuote.price}} {{deliveryQuote.currency}}</p>
@@ -46,7 +46,6 @@ export default {
   },
   watch: {
     quotes: function (newVal, oldVal) {
-      console.log('shcas;la' + this.quotes.length)
       this.selectedDeliveryQuoteIndexes = Array(this.quotes.length).fill(0)
     }
   }
