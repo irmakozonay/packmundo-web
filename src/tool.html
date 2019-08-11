@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Three.JS + Dat.GUI = <3</title> <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+            <link rel="stylesheet" href="css/style.css">
+            <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+            <script src='https://threejs.org/build/three.min.js'></script>
+            <script src='http://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.5/dat.gui.min.js'></script>
+            <script src='https://s.cdpn.io/25480/OrbitControls.js'></script>
+            <script src="js/ColladaLoader.js"></script>
+            <script src="js/SVGLoader.js"></script>
+            <script src="js/WebGL.js"></script>
+            <script src="js/Tween.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.22/fabric.min.js"></script>
+            <script src="js/index.js"></script>
+            <script src="js/colorpicker.js"></script>
+            <link href="css/colorpicker.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="containercanvas"></div>
+    <div class="container">
+        <div>
+            <canvas id="drawing-canvas" height="128" width="256"></canvas>
+        </div>
+    </div>
+    <div class="topbuttons">
+        <div class="">
+            <div class="openbttn">
+            </div>
+            <div class="contbuttons">
+                <ul>
+                    <li><a id="closebtn" href="javascript:void(0)">Close</a></li>
+                    <li>
+                    <li><a id="openbtn" href="javascript:void(0)">Open</a></li>
+                    <li>
+                        <a id="backClose" href="javascript:void(0)">BACK</a>
+                    </li>
+                    <li>
+                        <a id="frontClose" href="javascript:void(0)">FRONT</a>
+                    </li>
+                    <li>
+                        <a id="leftClose" href="javascript:void(0)">LEFT</a>
+                    </li>
+                    <li>
+                        <a id="rightClose" href="javascript:void(0)">RIGHT</a>
+                    </li>
+                    <li>
+                        <a id="topClose" href="javascript:void(0)">TOP</a>
+                    </li>
+                    <li>
+                        <a id="bottomClose" href="javascript:void(0)">BOTTOM</a>
+                    </li>
+                    <li>
+                        <a id="frontinClose" href="javascript:void(0)">FRONTIN</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="threejs"></div>
+
+    <div id="boxEditor">
+        <table>
+            <tr>
+                <td>
+                    <table>
+                        <tr>
+                            <td>Length:</td>
+                            <td><input id="txtLength" type="number" value="100" /></td>
+                        </tr>
+                        <tr>
+                            <td>Width:</td>
+                            <td><input id="txtWidth" type="number" value="100" /></td>
+                        </tr>
+                        <tr>
+                            <td>Depth:</td>
+                            <td><input id="txtDepth" type="number" value="100" /></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><input id="btnUpdateSize" type="button" value="Update" /></td>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <table>
+                        <tr>
+                            <td>Change Color:</td>
+                            <td>
+                                <div id="inputColor"></div>
+                            </td>
+                        </tr>
+
+                    </table>
+                </td>
+                <td>
+                    <table>
+                        <tr>
+                            <td>Font Family:</td>
+                            <td>
+                                <select id="fontFamily">
+                                    <option value="arial">Arial</option>
+                                    <option value="helvetica" selected="">Helvetica</option>
+                                    <option value="myriad pro">Myriad Pro</option>
+                                    <option value="delicious">Delicious</option>
+                                    <option value="verdana">Verdana</option>
+                                    <option value="georgia">Georgia</option>
+                                    <option value="courier">Courier</option>
+                                    <option value="comic sans ms">Comic Sans MS</option>
+                                    <option value="impact">Impact</option>
+                                    <option value="monaco">Monaco</option>
+                                    <option value="optima">Optima</option>
+                                    <option value="hoefler text">Hoefler Text</option>
+                                    <option value="plaster">Plaster</option>
+                                    <option value="engagement">Engagement</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Text Color:</td>
+                            <td><input type="color" id="fontColor" value="#c91e1e"></td>
+                        </tr>
+                        <tr>
+                            <td>Font Size:</td>
+                            <td><input type="range" value="14" min="1" max="120" step="1" id="fontSize"></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>
+                                    <span style="margin-right: 10px">Origin X: </span>
+
+                                    <label>
+                                        Center
+                                        <input type="checkbox" id="originX" value="center" checked>
+                                    </label>
+
+                                </p>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>
+                                    <span style="margin-right: 10px">Origin Y: </span>
+
+                                    <label>
+                                        Center
+                                        <input type="checkbox" id="originY" value="center" checked>
+                                    </label>
+
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td> <input type="button" value="Yazı Ekle" id="btnAddText" /></td>
+                        </tr>
+                    </table>
+
+                </td>
+                <td>
+                    <table>
+                        <tr>
+                            <td> <img src="resim.png" id="my-image" width="100" height="100"></td>
+
+                        </tr>
+                        <tr>
+
+                            <td> <input type="button" value="Resim Ekle" id="btnAddImage" /></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
