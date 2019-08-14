@@ -235,10 +235,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"); //url hep global
+// @import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"); //url hep global
 @import "../styles/toolstyle.scss"; //scss olursa scoped oldugu icin lokal, css olacaksa asagidaki gibi yapmak gerek
 @import "../styles/colorpicker.scss";
 </style>
 
-<!-- <style scoped src="../styles/css/style.css"></style>
-<style scoped src="../styles/css/colorpicker.css"></style> -->
+<!-- <style src="../styles/toolstyle.css"></style>
+<style scoped src="../styles/colorpicker.css"></style>  -->
